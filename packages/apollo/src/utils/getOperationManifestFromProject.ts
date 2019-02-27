@@ -1,8 +1,5 @@
 import { GraphQLClientProject } from "apollo-language-server";
-import {
-  defaultEngineReportingSignature,
-  hashForOperationSignature
-} from "apollo-graphql";
+import { defaultEngineReportingSignature, operationHash } from "apollo-graphql";
 
 export interface ManifestEntry {
   signature: string;
@@ -21,7 +18,7 @@ export function getOperationManifestFromProject(
     const printed = defaultEngineReportingSignature(operationAST, "");
 
     return {
-      signature: hashForOperationSignature(printed),
+      signature: operationHash(printed),
       document: printed,
       metadata: {
         engineSignature: printed
