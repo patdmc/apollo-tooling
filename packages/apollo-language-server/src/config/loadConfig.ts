@@ -25,7 +25,7 @@ const defaultSearchPlaces = [
 
 // Based on order, a provided config file will take precedence over the defaults
 const getSearchPlaces = (configFile?: string, loadExactOnly?: boolean) =>
-  loadExactOnly
+  loadExactOnly && configFile
     ? [configFile]
     : [...(configFile ? [configFile] : []), ...defaultSearchPlaces];
 
